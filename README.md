@@ -2,6 +2,7 @@
 A simple QR code generator written in Java.
 
 ![link-to-gh](https://github.com/evilprince2009/9qr/blob/main/images/link-to-gh.png)
+
 QR code generated with _9qr_
 
 ## Generate your own QR using 9qr
