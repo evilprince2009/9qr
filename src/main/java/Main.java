@@ -7,7 +7,7 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) {
         String data = "https://www.github.com/evilprince2009";
-        String path = "D:\\Dump\\link-to-gh.png";
+        String path = ".\\images\\link-to-gh.png";
         int dimension = 200;
         try {
             generateQRCode(data, path, dimension);
