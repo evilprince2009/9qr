@@ -10,17 +10,14 @@ public class Main {
     public static void main(String[] args) {
         System.out.print("Input Data: ");
         String data = buffer.next();
-        System.out.println();
         System.out.print("Save file path: ");
         String path = buffer.next();
-        System.out.println();
         System.out.print("Filename: ");
         String filename = buffer.next();
-
         buffer.close();
 
         String fullDir = path + "\\" + filename + ".png";
-        int dimension = 200;
+        int dimension = 500;
         try {
             generateQRCode(data, fullDir, dimension);
             System.out.println("QR Code created successfully. Please check the file at " + path);
@@ -30,7 +27,11 @@ public class Main {
     }
 
     private static void generateQRCode(String data, String path, int dimension) throws Exception {
-        BitMatrix matrix = new MultiFormatWriter().encode(new String(data.getBytes("UTF-8"), "UTF-8"), BarcodeFormat.QR_CODE, dimension, dimension);
+        final String charset = "UTF-8";
+        byte[] bytes = data.getBytes(charset);
+        String container = new String(bytes, charset);
+        MultiFormatWriter formatWriter = new MultiFormatWriter();
+        BitMatrix matrix = formatWriter.encode(container, BarcodeFormat.QR_CODE, dimension, dimension);
         MatrixToImageWriter.writeToFile(matrix, path.substring(path.lastIndexOf('.') + 1), new File(path));
     }
 }
